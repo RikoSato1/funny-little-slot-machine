@@ -1,0 +1,118 @@
+#include <iostream>
+#include <cstdlib>
+//by Riko
+
+void top_screen(){
+    std::cout << "###############################\n";
+    std::cout << "##        Slot Machine       ##\n";
+    std::cout << "##         $2 to spin        ##\n";
+}
+void bottom_screen(){
+    std::cout << "##                           ##\n";
+    std::cout << "###############################";  
+}
+void instructions(){
+    std::cout << "\nTo play, press 1 to spin. press 2 to leave.\n";
+}
+
+void money_check(int money){
+    std::cout << "\nyou have " << money << " dollars right now.\n";
+}
+int main()
+{
+  int input;
+  int second_input;
+  bool play = true;
+  int money = 5;
+
+  srand(time(NULL));
+  
+  do{
+    std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+  top_screen();
+  std::cout << "##                           ##\n";
+  std::cout << "##                           ##\n";
+  bottom_screen();
+  instructions();
+  std::cout << "You have " << money << " dollars right now.\n";
+  
+  std::cin >> input;
+  if (input == 1 || input == 11){
+    money -= 2;
+    int rand_1 = (rand() % 4) + 1;
+    int rand_2 = (rand() % 4) + 1;
+    int rand_3 = (rand() % 4) + 1;
+    std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+    top_screen();
+    std::cout << "##          " << rand_1 << "  " << rand_2 << "  " << rand_3 << "          ##" << "\n";
+    if (rand_1 == rand_2 && rand_2 == rand_3){
+        money += 3;
+        std::cout << "##          Big win!         ##\n";
+    }
+    else if (rand_1 == rand_2){
+        money += 1;
+        std::cout << "##         Small win!        ##\n";
+    }
+    else if (rand_1 == rand_3){
+        money += 1;
+        std::cout << "##         Small win!        ##\n";
+    }
+    else if (rand_2 == rand_3){
+        money += 1;
+        std::cout << "##         Small win!        ##\n";
+    }
+    else{
+        std::cout << "##           Lose!           ##\n";
+    }
+    bottom_screen();
+    money_check(money);
+    std::cout << "press 1 to continue, press 2 to stop\n";
+    std::cin >> second_input;
+    if (second_input == 1 || second_input == 11){
+        //empty box
+    }                   
+    else{
+        std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+        
+        int good_bye_message = (rand() % 2) + 1;
+        if (good_bye_message == 1){
+            std::cout << "see you later aligator";   //i tried making the goodbye message a function, it didn't work BUT, 
+        }                                           //i'm going to try again. if there is no follow up message, it failed
+        else{
+            std::cout << "See you in a while, crocodile";
+        }
+        exit(0);
+    }
+  if (money <= 0){
+        int good_bye_message = (rand() % 2) + 1;
+        if (good_bye_message == 1){
+            std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYou went bankrupt, see you later aligator";
+        }
+        else{
+            std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYou went bankrupt, see you in a while, crocodile";
+        }
+        exit(0);
+  }
+  }
+    else if (input == 314159265){
+        money += 314159265;
+    }
+    
+    else{
+        std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+        int good_bye_message = (rand() % 2) + 1;
+        if (good_bye_message == 1){
+            std::cout << "see you later aligator";
+        }
+        else{
+            std::cout << "See you in a while, crocodile";
+        }
+        exit(0);
+    }
+    
+    std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+  
+  }while (play == true);
+    
+    return 0;
+}
