@@ -1,2 +1,2 @@
-# funny-little-slot-machine
-funny little slot machine in c++
+# slot-machine game
+slot machine game in c++
